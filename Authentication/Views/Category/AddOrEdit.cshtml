@@ -1,0 +1,47 @@
+﻿@model Authentication.Models.Category
+
+@{
+    ViewData["PageTitle"] = Model.CategoryId == 0 ? "Create a new category" : "Edit category";
+    var data = new string[] { "🎞", "🌁", "👚", "🍽", "⛽", "🎁", "🌴", "🛒", "🏆", "🚖", "🚼", "📞", "📺", "🎬", "💡", "📔", "🏥", "💰" };
+    
+}
+
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="widget p-5" style="background-color:#212b36">
+            <form asp-action="AddOrEdit">
+                @if (@TempData["Error"] != null)
+                {
+                    <span class="text-danger fs-6">@TempData["Error"]</span>
+                }
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="CategoryId" value="@Model.CategoryId" />
+                <div class="mb-3">
+                    <div class='e-btn-group custom-rbt-group'>
+                        <input type="radio" id="radioleft" name="Type" value="Expense" checked="@(Model.Type=="Expense")" />
+                        <label class="e-btn" for="radioleft">Expense</label>
+                        <input type="radio" id="radiomiddle" name="Type" value="Income" checked="@(Model.Type=="Income")" />
+                        <label class="e-btn" for="radiomiddle">Income</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Title"></label>
+                    <input id="title" placeholder="Title" asp-for="Title" class="form-control beautiful-input " />
+                    <span asp-validation-for="Title" class="text-danger fs-6"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-dropdownlist id="icon" ejs-for="Icon" placeholder="Icon" floatLabelType="Always"
+                                      dataSource="data" allowFiltering="true" ignoreAccent="true" filterType="Contains" popupHeight="200px">
+                    </ejs-dropdownlist>
+                   
+                </div>
+                <button id="submit" type="submit" class="btn btn-primary btn-success submit-btn">Submit</button>
+            </form>
+        </div>
+
+
+    </div>
+    
+</div>
+

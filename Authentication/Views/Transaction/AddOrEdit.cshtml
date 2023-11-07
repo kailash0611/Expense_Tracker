@@ -1,0 +1,59 @@
+﻿@model Authentication.Models.Transaction
+
+@{
+    ViewData["PageTitle"] = Model.TransactionId == 0 ? "Create a new transaction" : "Edit transaction";
+    var data = new string[] { "UPI", "Cash", "Bank Transfer", "Credit Card", "Debit Card" };
+    var Id = Model.TransactionId;
+    var Date = Model.Date;
+}
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="widget p-5" style="background-color:#212b36">
+            <form asp-action="AddOrEdit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="TransactionId" value="@Model.TransactionId" />
+                <div class="mb-3">
+                    <label asp-for="Date"></label>
+                    <input asp-for="Date" type="date" id="date" name="date" max="@DateTime.Now.ToString("MMM-dd-yy")" placeholder="MMM-dd-yy" class="form-control beautiful-input">
+                </div>
+                <div class="mb-3">
+                    <ejs-dropdownlist id="ddlModeOfPayment" ejs-for="ModeOfPayment"
+                                      placeholder="Mode of Payment" floatLabelType="Always"
+                                      dataSource="data" allowFiltering="true" ignoreAccent="true"
+                                      filterType="Contains" popupHeight="200px">
+                    </ejs-dropdownlist>
+                    <span asp-validation-for="ModeOfPayment" class="text-danger fs-6"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-dropdownlist id="ddlCategory" ejs-for="CategoryId"
+                                      dataSource="@ViewBag.Categories" placeholder="Category"
+                                      floatLabelType="Always" allowFiltering="true" ignoreAccent="true"
+                                      filterType="Contains" popupHeight="220px">
+                        <e-dropdownlist-fields value="CategoryId" text="TitleWithIcon"></e-dropdownlist-fields>
+                    </ejs-dropdownlist>
+                    <span asp-validation-for="CategoryId" class="text-danger fs-6"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Amount"></label>
+                    <input id="amount" asp-for="Amount"
+                           placeholder="Amount" type="number"
+                           min=0 format="0" class="form-control beautiful-input" />
+                    <span asp-validation-for="Amount" class="text-danger fs-6"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Note"></label>
+                    <input id="note" placeholder="Note" asp-for="Note"
+                           multiline="true" class="form-control beautiful-input " />
+                </div>
+                <button id="submit" type="submit" content="Submit" class=" btn btn-success btn-primary submit-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}*@

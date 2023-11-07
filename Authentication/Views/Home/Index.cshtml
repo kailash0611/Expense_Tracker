@@ -1,0 +1,22 @@
+﻿@using System.Security.Claims;
+
+@{
+    ViewData["Title"] = "Home Page";
+    string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+  // Claims are created for each logged in user and it stays for a session which means that if user get logged out than he/she lost its all claims.
+  // We can access the claims using the "User>claims" which contains the list of all the claims of the current logged in User.
+  //   <ul>
+  //       @foreach (var claim in User.Claims)
+  //       {
+  //           <li>@claim.Type: @claim.Value</li>
+  //       }
+  //   </ul>
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="text-center">
+        
+    </div>
+}

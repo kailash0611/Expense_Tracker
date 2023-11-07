@@ -1,0 +1,26 @@
+1. Category 
+
+# AddOrEdit
+
+Step 1:  Controller goes to the Get AddOrEdit Action Method
+           Checks for the id attribute 
+            if(id == 0)
+                 Then returns the new View provided with a new Category object
+            else if(id!=0)
+                 Then find the Category with provided id and update it and save it.
+       
+Step 2 : Get AddOrEdit Method Returns the new Object of Category to the AddOrEdit View
+Step 3 : AddOrEdit View Creates the View According to the New Object
+Step 4 : Then after clicking on the submit button the control is given to the Post AddOrEdit Method and object 
+         provided in the argument of the method has all the values which was provided by the user in the form via Model Binding.
+
+Step 5: Then it checks for the categoryId
+         if(categoryId == 0)
+              Then It creates a new Category and add the category into database
+        else
+              It updates the particular Category.
+#Index
+
+Step 1: 
+
+# Delete

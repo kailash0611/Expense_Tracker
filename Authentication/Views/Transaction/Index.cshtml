@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Authentication.Models.Transaction>
+
+@{
+    ViewData["PageTitle"] = "Transactions";
+    ViewData["PageActionText"] = "+ New Transaction";
+    ViewData["PageActionUrl"] = "/Transaction/AddOrEdit";
+}
+
+<html>
+<head>
+
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-sm table-hover" style="font-weight:lighter; color:white">
+                <thead class="mb-3">
+                    <tr>
+                        <th scope="col">Category</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Mode</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var transaction in Model)
+                    {
+                        <tr scope="row">
+                            <td>@transaction.CategoryTitleWithIcon</td>
+                            <td>@transaction.Date.ToLongDateString()</td>
+                            <td>@transaction.ModeOfPayment</td>
+                            <td>@transaction.Amount</td>
+                            <td>
+                                <div class="d-flex flex-row justify-content-start">
+                                    <a class="btn btn-sm no-a-decoration" href="/Transaction/AddOrEdit/@transaction.TransactionId">
+                                        <i class="fa-solid fa-pen fa-lg"></i>
+                                    </a>
+
+
+                                    <form action="/Transaction/Delete/@transaction.TransactionId" method="post">
+                                        <button type="submit" class="btn btn-sm btn-link no-a-decoration">
+                                            <i class="fa-solid fa-trash-can fa-lg text-danger"></i>
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+

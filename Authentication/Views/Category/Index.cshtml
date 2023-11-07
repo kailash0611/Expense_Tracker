@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Authentication.Models.Category>
+
+@{
+    ViewData["PageTitle"] = "Categories";
+    ViewData["PageActionText"] = "+ New Category";
+    ViewData["PageActionUrl"] = "/Category/AddOrEdit";
+}
+<html>
+<head>
+
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-sm table-hover" style="font-weight:lighter; color:white">
+                <thead class="mb-3">
+                    <tr>
+                        <th scope="col">Category</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+
+                
+                    <tbody>
+
+                        @foreach (var category in Model)
+                        {
+                            <tr scope="row">
+                                <td>@category.TitleWithIcon</td>
+                                <td>
+                                    @if (category.Type == "Income")
+                                    {
+                                        <span class="badge bg-success">@category.Type</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">@category.Type</span>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="d-flex flex-row justify-content-start">
+                                        <a class="btn btn-sm no-a-decoration" href="/Category/AddOrEdit/@category.CategoryId">
+                                            <i class="fa-solid fa-pen fa-lg"></i>
+                                        </a>
+
+
+                                        <form action="/Category/Delete/@category.CategoryId" method="post">
+                                            <button type="submit" class="btn btn-sm btn-link no-a-decoration">
+                                                <i class="fa-solid fa-trash-can fa-lg text-danger"></i>
+                                            </button>
+                                        </form>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

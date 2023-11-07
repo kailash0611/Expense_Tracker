@@ -1,0 +1,152 @@
+﻿@using Authentication.ViewModels;
+@model ReportViewModel
+
+@{
+    ViewData["PageTitle"] = "Report";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        
+        <div class="col-lg-5 mb-4">
+            <div class="card widget">
+                <div class="card-header">
+                    <h5 class="fw-bold">Expense By Category</h5>
+                </div>
+                <div class="card-body">
+                    <ejs-accumulationchart id="doughnutchart" enableSmartLabels background="#1a222b">
+                        <e-accumulation-series-collection>
+                            <e-accumulation-series dataSource="@ViewBag.ExpenseDoughnutChartData"
+                                                   xName="categoryTitleWithIcon" yName="amount"
+                                                   innerRadius="60%" legendShape="Circle"
+                                                   palettes=@(new string[]{"#0e8d76","#a4b219","#cb9b00","#8a442c","#0454b5","#7d0a0a","#822690","#4c2090","#313e93","#0096ac"})>
+                                <e-accumulationseries-datalabel name="formattedAmount" visible></e-accumulationseries-datalabel>
+                            </e-accumulation-series>
+                        </e-accumulation-series-collection>
+                        <e-accumulationchart-legendsettings position="Top" toggleVisibility="false">
+                            <e-legendsettings-textstyle color="#fff" size="1rem"></e-legendsettings-textstyle>
+                        </e-accumulationchart-legendsettings>
+                        <e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings>
+                    </ejs-accumulationchart>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="col-lg-7 mb-4">
+            <div class="card widget">
+                <div class="card-header">
+                    <h5 class="fw-bold">Income vs Expense</h5>
+                </div>
+                <div class="card-body">
+                    <ejs-chart id="spline-chart" background="#1a222b"
+                               palettes=@(new string[]{"#54ffa9","#ffe91a"})>
+                        <e-chart-primaryxaxis valueType="Category">
+                        </e-chart-primaryxaxis>
+                        <e-series-collection>
+                            <e-series dataSource="@ViewBag.SplineChartData" xName="day" width="3"
+                                      yName="income" name="Income" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline"></e-series>
+                            <e-series dataSource="@ViewBag.SplineChartData" xName="day" width="3"
+                                      yName="expense" name="Expense" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline"></e-series>
+                        </e-series-collection>
+                        <e-chart-legendsettings position="Top" alignment="Far" toggleVisibility="false">
+                            <e-legendsettings-textstyle color="#fff" size="1rem"></e-legendsettings-textstyle>
+                        </e-chart-legendsettings>
+                        <e-chart-tooltipsettings enable shared></e-chart-tooltipsettings>
+                    </ejs-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-5">
+    <div class="row">
+   
+        <div class="col-lg-6">
+            <div class="card widget">
+                <div class="card-header">
+                    <h5 class="fw-bold">Recent IncomeTransactions</h5>
+                </div>
+                <div class="card-body">
+                    <ejs-grid id="Recent-Income-Transactions"
+                              dataSource="@ViewBag.RecentIncomeTransactions" gridLines="None">
+                        <e-grid-columns>
+                            <e-grid-column headerText="Category" field="CategoryTitleWithIcon"></e-grid-column>
+                            <e-grid-column headerText="Date" field="Date" type="date" format="MMM-dd-yy"></e-grid-column>
+                            <e-grid-column headerText="Amount" field="FormattedAmount" textAlign="Right"></e-grid-column>
+                        </e-grid-columns>
+                    </ejs-grid>
+                </div>
+            </div>
+        </div>
+
+       
+        <div class="col-lg-6 mt-1">
+            <div class="card widget">
+                <div class="card-header">
+                    <h5 class="fw-bold">Recent Expense Transactions</h5>
+                </div>
+                <div class="card-body">
+
+
+                    <ejs-grid id="Recent-Expense-Transactions"
+                              dataSource="@ViewBag.RecentExpenseTransactions" gridLines="None">
+                        <e-grid-columns>
+                            <e-grid-column headerText="Category" field="CategoryTitleWithIcon"></e-grid-column>
+                            <e-grid-column headerText="Date" field="Date" type="date" format="MMM-dd-yy"></e-grid-column>
+                            <e-grid-column headerText="Amount" field="FormattedAmount" textAlign="Right"></e-grid-column>
+                        </e-grid-columns>
+                    </ejs-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    
+    <div class="row mb-4">
+     
+        <div class="col-lg-8 mt-5">
+            <div class="card widget">
+                <div class="card-header">
+                    <h5 class="fw-bold">Mode of Payments </h5>
+                </div>
+                <div class="card-body">
+                    <ejs-chart background="#1a222b" id="bar-chart" title="Mode of Payment by Categories">
+                        <e-series-collection>
+                            
+                            <e-series dataSource="@ViewBag.ModeOfPaymentBarChartData" xName="ModeOfPayment" yName="amount"
+                                      name="Mode of Payments" type="Column">
+                                <e-series-marker visible="true"></e-series-marker>
+                            </e-series>
+
+                        </e-series-collection>
+                        
+                        <e-chart-chartarea>
+                            <e-chartarea-border width="0"></e-chartarea-border>
+                        </e-chart-chartarea>
+
+
+                        <e-chart-primaryxaxis valueType="Category"></e-chart-primaryxaxis>
+                        <e-chart-primaryyaxis title="Amount"></e-chart-primaryyaxis>
+                        
+                        <e-chart-tooltipSettings enable="true"></e-chart-tooltipSettings>
+                    </ejs-chart>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mt-5">
+            <div class="widget h-100">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <span><i class="fa-solid fa-plus fa-2xl"></i> Widget</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+

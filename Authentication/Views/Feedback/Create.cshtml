@@ -1,0 +1,42 @@
+﻿@model Authentication.Models.Feedback;
+
+@{
+    ViewData["PageTitle"] = "Create Feedback";
+    var successMessage = TempData["SuccessMessage"] as string;
+
+    @if (successMessage != null)
+    {
+        <div class="alert alert-success col-md-7">
+            <h5 class="text-center">@successMessage</h5>
+        </div>
+    }
+
+}
+
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="widget p-5" style="background-color:#212b36">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-3">
+                    <label asp-for="Name"></label>
+                    <input id="name" placeholder="Name" asp-for="Name" class="form-control beautiful-input " />
+                    <span asp-validation-for="Name" class="text-danger fs-6"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Email"></label>
+                    <input id="email" placeholder="Email" asp-for="Email" type="email" class="form-control beautiful-input " />
+                    <span asp-validation-for="Email" class="text-danger fs-6"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Suggestion"></label>
+                    <textarea id="suggesstion" placeholder="Suggesstion" asp-for="Suggestion"
+                              multiline="true" class="form-control beautiful-input "></textarea>
+                    <span asp-validation-for="Suggestion" class="text-danger fs-6"></span>
+                </div>
+                <button id="submit" type="submit" class="btn btn-primary btn-success submit-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
