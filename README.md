@@ -29,14 +29,14 @@ Expense Tracker is a web-based application built using the ASP.NET MVC framework
 
 ### Dashboard
 
-![Dashboard](Dashboard After transaction .png)
+![Dashboard](Dashboard_After_transaction.png)
 
 - Personalized dashboard for each user with quick access to key features.
 
 ### Category Management
 
-![Category Management](Category (Expense).png)
-![Category Management](Category (List).png)
+![Category Management](Category(Expense).png)
+![Category Management](Category(List).png)
 
 - Create, edit, and delete expense and income categories for better organization.
 
@@ -48,7 +48,7 @@ Expense Tracker is a web-based application built using the ASP.NET MVC framework
 
 ### Reporting
 
-![Reporting](report Dashboard.png)
+![Reporting](reportDashboard.png)
 
 - Generate and view expense and income reports based on different criteria like date range or category.
 
