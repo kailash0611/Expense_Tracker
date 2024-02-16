@@ -22,55 +22,39 @@ Expense Tracker is a web-based application built using the ASP.NET MVC framework
 ## 2. Features<a name="features"></a>
 
 ### User Authentication
-
+![User Authentication](Register.png)
 ![User Authentication](Login.png)
 
 - Secure user authentication system to ensure data privacy.
 
 ### Dashboard
 
-![Dashboard](url-to-dashboard-image)
+![Dashboard](Dashboard After transaction .png)
 
 - Personalized dashboard for each user with quick access to key features.
 
-### Expense Management
-
-![Expense Management](url-to-expense-management-image)
-
-- Add, edit, and delete expenses with details such as amount, date, and category.
-
-### Income Management
-
-![Income Management](url-to-income-management-image)
-
-- Track income transactions for a comprehensive financial overview.
-
 ### Category Management
 
-![Category Management](url-to-category-management-image)
+![Category Management](Category (Expense).png)
+![Category Management](Category (List).png)
 
 - Create, edit, and delete expense and income categories for better organization.
 
 ### Transaction Management
 
-![Transaction Management](url-to-transaction-management-image)
+![Transaction Management](transaction.png)
 
 - Easily create new transactions and associate them with specific categories.
 
 ### Reporting
 
-![Reporting](url-to-reporting-image)
+![Reporting](report Dashboard.png)
 
 - Generate and view expense and income reports based on different criteria like date range or category.
 
 ### Feedback
 
-![Feedback](url-to-feedback-image)
+![Feedback](Feedback.png)
 
 - Provide feedback on the application for continuous improvement.
 
-### Logout
-
-![Logout](url-to-logout-image)
-
-- Securely log out from the application.
