@@ -23,7 +23,7 @@ Expense Tracker is a web-based application built using the ASP.NET MVC framework
 
 ### User Authentication
 
-![User Authentication]()
+![User Authentication](Login.png)
 
 - Secure user authentication system to ensure data privacy.
 
